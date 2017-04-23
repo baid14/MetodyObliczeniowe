@@ -1,0 +1,4 @@
+Rozwiazanie dla punktu: t = ;20
+Wartosc dokladna = ;1
+B³êdy
+krok;bez. Eulera;pos. Eulera;M. trapezow

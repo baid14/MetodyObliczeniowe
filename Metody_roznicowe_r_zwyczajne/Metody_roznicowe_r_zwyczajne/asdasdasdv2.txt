@@ -1,0 +1,160 @@
+#include <iostream>
+#include <Windows.h>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+double wzor_analityczny( double t )
+{
+	return 1 - exp( -10.0 * ( t + atan( t ) ));
+}
+
+double metoda_bezposrednia_eulera( double krok, double tmax, bool flaga)
+{
+	double blad = 0.0;
+	double y = 0.0;	//warunek poczatkowy y(0) = 0
+	double wart_dokladna;
+
+	for ( double i = 0.0; i < tmax; i += krok )
+	{
+		wart_dokladna = wzor_analityczny( i );
+		y = y + krok *( - ((10.0 *i * i + 20.0) /( i * i + 1.0) )*(y - 1.0) );
+		wart_dokladna = fabs( wart_dokladna - y );
+		if ( wart_dokladna > blad )
+			blad = wart_dokladna;
+	}
+	if ( flaga == true )
+		return blad;
+	else
+		return y;
+}
+
+double metoda_posrednia_eulera( double krok, double tmax, bool flaga )
+{
+	double blad = 0.0;
+	double y = 0.0;	//warunek poczatkowy y(0) = 0
+	double wart_dokladna, ulamek;
+
+	for ( double i = 0.0; i < tmax; i += krok )
+	{
+		wart_dokladna = wzor_analityczny( i );
+		ulamek = ( 10.0 * ( i + krok ) * ( i + krok ) + 20.0 ) / ( ( i + krok ) * ( i + krok ) + 1.0 );
+		y = (y + krok * ulamek) / (1 + krok * ulamek);
+		wart_dokladna = fabs( wart_dokladna - y );
+		if ( wart_dokladna > blad )
+			blad = wart_dokladna;
+	}
+
+	if ( flaga == true )
+		return blad;
+	else
+		return y;
+}
+
+double metoda_trapezow( double krok, double tmax, bool flaga )
+{
+	double blad = 0.0;
+	double y = 0.0;	//warunek poczatkowy y(0) = 0
+	double wart_dokladna, ulamek_n, ulamek_n_plus;
+
+	for ( double i = 0.0; i < tmax; i += krok )
+	{
+		wart_dokladna = wzor_analityczny( i );
+		ulamek_n = (( 10.0 * i * i + 20.0 ) / ( i * i + 1.0 ) );
+		ulamek_n_plus = ( 10.0 * ( i + krok ) * ( i + krok ) + 20.0 ) / ( ( i + krok ) * ( i + krok ) + 1.0 ); ;
+		y = ( ( -krok / 2.0 ) * ( ulamek_n * ( y - 1.0 ) - ulamek_n_plus ) + y ) / ( 1.0 + ( krok / 2.0 ) * ulamek_n_plus );
+		wart_dokladna = fabs( wart_dokladna - y );
+		if ( wart_dokladna > blad )
+			blad = wart_dokladna;
+	}
+
+	if ( flaga == true )
+		return blad;
+	else
+		return y;
+}
+
+void metody_roznicowe()
+{
+	double krok = 0.1, mbe_s, mbe_ns, mpe, mt, anl;
+	const double t_max = 10.0;
+
+	fstream bledy, dane_1, dane_2;
+
+
+	bledy.open( "bledy.txt", fstream::out );
+
+	cout << endl << "Bledy" << endl;
+	cout << "  i |         krok |            mbe |            mpe|            mt |" << endl;
+	cout << "-------------------------------------------------------------------" << endl;
+
+	for ( int i = 0; i < 20; i++ )
+	{
+		mbe_s = log10( metoda_bezposrednia_eulera( krok, t_max, true ) );
+		mpe = log10( metoda_posrednia_eulera( krok, t_max, true ) );
+		mt = log10( metoda_trapezow( krok, t_max, true ) );
+		bledy << log10(krok) << " " << mbe_s << " " << mpe << " " << mt << endl;
+		cout.width( 4 );
+		cout << i << "|";
+		cout.width( 15 );
+		cout << krok << "|";
+		cout.width( 15 );
+		cout << mbe_s << "|";
+		cout.width( 15 );
+		cout << mpe << "|";
+		cout.width( 15 );
+		cout <<  mt << "|" << endl;
+		
+		krok /= 2;
+	}
+	bledy.close( );
+	
+	cout << endl << "Dane do a b c" << endl;
+	//cout << "  i |         krok |           anl |           mpe |          mt |           mbe_s |          mbe_ns |" << endl;
+	//cout << "-------------------------------------------------------------------------------------------------------" << endl;
+
+	dane_1.open( "dane.txt", fstream::out );
+	krok = 0.01;
+	for ( double t = 0; t < 5; t += 0.01 )
+	{
+		anl = wzor_analityczny( t );
+		mpe = metoda_posrednia_eulera( krok, t, false );
+		mt = metoda_trapezow( krok, t, false );
+		mbe_s = metoda_bezposrednia_eulera( krok, t, false );
+
+		dane_1 << t << " " << anl << " " << mpe << " " << mt << " " << mbe_s << endl;
+		/*cout.width( 4 );
+		cout << t << "|";
+		cout.width( 15 );
+		cout << anl << "|";
+		cout.width( 15 );
+		cout << mpe << "|";
+		cout.width( 15 );
+		cout << mt << "|" ;
+		cout.width( 15 );
+		cout << mbe_s << "|" ;
+		cout.width( 15 );
+		cout << mbe_ns << "|" << endl;*/
+	}
+	dane_1.close();
+
+
+	dane_2.open( "danee.txt", fstream::out );
+
+	for ( double t = 0; t < 5; t += 0.15 )
+	{
+		mbe_ns = metoda_bezposrednia_eulera( 0.15, t, false );
+		dane_2 << t << " " << mbe_ns << endl;
+
+	}
+	dane_2.close( );
+
+}
+
+int main()
+{
+	metody_roznicowe( );
+	system( "Pause" );
+	return 0;
+}

@@ -1,0 +1,44 @@
+﻿Build started 2015-06-16 14:58:56.
+     1>Project "G:\Szkoła\Semsetr IV\Metody Obliczeniowe\2. Laboratorium\Lab11\1.Przydatne\ProjektD\ProjektD wersja2\mn-D.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         F:\Visual Studio Professional 2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt calerf.cpp Elapsed.cpp "mn-D.cpp" ProjectD.cpp stdafx.cpp
+         stdafx.cpp
+     1>g:\szkoła\semsetr iv\metody obliczeniowe\2. laboratorium\lab11\1.przydatne\projektd\projektd wersja2\calerf.h(6): warning C4273: 'erf' : inconsistent dll linkage
+                 f:\visual studio professional 2013\vc\include\math.h(486) : see previous definition of 'erf'
+     1>g:\szkoła\semsetr iv\metody obliczeniowe\2. laboratorium\lab11\1.przydatne\projektd\projektd wersja2\calerf.h(7): warning C4273: 'erfc' : inconsistent dll linkage
+                 f:\visual studio professional 2013\vc\include\math.h(487) : see previous definition of 'erfc'
+         ProjectD.cpp
+     1>g:\szkoła\semsetr iv\metody obliczeniowe\2. laboratorium\lab11\1.przydatne\projektd\projektd wersja2\calerf.h(6): warning C4273: 'erf' : inconsistent dll linkage
+                 f:\visual studio professional 2013\vc\include\math.h(486) : see previous definition of 'erf'
+     1>g:\szkoła\semsetr iv\metody obliczeniowe\2. laboratorium\lab11\1.przydatne\projektd\projektd wersja2\calerf.h(7): warning C4273: 'erfc' : inconsistent dll linkage
+                 f:\visual studio professional 2013\vc\include\math.h(487) : see previous definition of 'erfc'
+         mn-D.cpp
+     1>g:\szkoła\semsetr iv\metody obliczeniowe\2. laboratorium\lab11\1.przydatne\projektd\projektd wersja2\calerf.h(6): warning C4273: 'erf' : inconsistent dll linkage
+                 f:\visual studio professional 2013\vc\include\math.h(486) : see previous definition of 'erf'
+     1>g:\szkoła\semsetr iv\metody obliczeniowe\2. laboratorium\lab11\1.przydatne\projektd\projektd wersja2\calerf.h(7): warning C4273: 'erfc' : inconsistent dll linkage
+                 f:\visual studio professional 2013\vc\include\math.h(487) : see previous definition of 'erfc'
+         Elapsed.cpp
+     1>g:\szkoła\semsetr iv\metody obliczeniowe\2. laboratorium\lab11\1.przydatne\projektd\projektd wersja2\calerf.h(6): warning C4273: 'erf' : inconsistent dll linkage
+                 f:\visual studio professional 2013\vc\include\math.h(486) : see previous definition of 'erf'
+     1>g:\szkoła\semsetr iv\metody obliczeniowe\2. laboratorium\lab11\1.przydatne\projektd\projektd wersja2\calerf.h(7): warning C4273: 'erfc' : inconsistent dll linkage
+                 f:\visual studio professional 2013\vc\include\math.h(487) : see previous definition of 'erfc'
+         calerf.cpp
+     1>g:\szkoła\semsetr iv\metody obliczeniowe\2. laboratorium\lab11\1.przydatne\projektd\projektd wersja2\calerf.h(6): warning C4273: 'erf' : inconsistent dll linkage
+                 f:\visual studio professional 2013\vc\include\math.h(486) : see previous definition of 'erf'
+     1>g:\szkoła\semsetr iv\metody obliczeniowe\2. laboratorium\lab11\1.przydatne\projektd\projektd wersja2\calerf.h(7): warning C4273: 'erfc' : inconsistent dll linkage
+                 f:\visual studio professional 2013\vc\include\math.h(487) : see previous definition of 'erfc'
+         Generating Code...
+       Link:
+         F:\Visual Studio Professional 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Szkoła\Semsetr IV\Metody Obliczeniowe\2. Laboratorium\Lab11\1.Przydatne\ProjektD\ProjektD wersja2\Debug\mn-D.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Szkoła\Semsetr IV\Metody Obliczeniowe\2. Laboratorium\Lab11\1.Przydatne\ProjektD\ProjektD wersja2\Debug\mn-D.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Szkoła\Semsetr IV\Metody Obliczeniowe\2. Laboratorium\Lab11\1.Przydatne\ProjektD\ProjektD wersja2\Debug\mn-D.lib" /MACHINE:X86 /SAFESEH Debug\calerf.obj
+         Debug\Elapsed.obj
+         "Debug\mn-D.obj"
+         Debug\ProjectD.obj
+         Debug\stdafx.obj
+     1>calerf.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+            Creating library G:\Szkoła\Semsetr IV\Metody Obliczeniowe\2. Laboratorium\Lab11\1.Przydatne\ProjektD\ProjektD wersja2\Debug\mn-D.lib and object G:\Szkoła\Semsetr IV\Metody Obliczeniowe\2. Laboratorium\Lab11\1.Przydatne\ProjektD\ProjektD wersja2\Debug\mn-D.exp
+         mn-D.vcxproj -> G:\Szkoła\Semsetr IV\Metody Obliczeniowe\2. Laboratorium\Lab11\1.Przydatne\ProjektD\ProjektD wersja2\Debug\mn-D.exe
+     1>Done Building Project "G:\Szkoła\Semsetr IV\Metody Obliczeniowe\2. Laboratorium\Lab11\1.Przydatne\ProjektD\ProjektD wersja2\mn-D.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:07.61

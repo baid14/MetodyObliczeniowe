@@ -1,0 +1,8 @@
+set logscale xy
+set xrange [1e-4:0.3]
+set yrange [1e-14:1e-4]
+set terminal wxt size 1280,900
+plot \
+ "wyniki.txt" using 1:2 with lines title "dyskretyzacja konwencjonalna",\
+ "wyniki.txt" using 1:3 with lines title "dyskretyzacja Numerowa"
+pause -1
